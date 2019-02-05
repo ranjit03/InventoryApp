@@ -1,6 +1,11 @@
 import React from "react";
 
 class AddItem extends React.Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
   render() {
     return (
       <form>
