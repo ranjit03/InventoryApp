@@ -3,10 +3,15 @@ import React from "react";
 class AddItem extends React.Component {
   constructor() {
     super();
-    this.state = {};
+    this.state = { isVisible: false };
+    this.handleClick = this.handleClick.bind(this);
+    this.additem = this.addItem.bind(this);
   }
 
-  render() {
+  handleClick() {
+    this.setState({ isVisible: true });
+  }
+  addItem() {
     return (
       <form>
         <table>
@@ -49,6 +54,15 @@ class AddItem extends React.Component {
           </tr>
         </table>
       </form>
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={this.handleClick}>Add new item</button>
+        {this.state.isVisible && this.addItem()}
+      </div>
     );
   }
 }

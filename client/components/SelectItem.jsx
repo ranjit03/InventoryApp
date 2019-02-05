@@ -32,15 +32,6 @@ class SelectItem extends React.Component {
           <button>Delete Stock</button>
         </div>
         <div className="col-6">
-          <table>
-            <tr>
-              <td />
-              <td align="middle">
-                <button>Add new item</button>
-              </td>
-            </tr>
-            <br />
-          </table>
           <AddItem />
         </div>
       </div>

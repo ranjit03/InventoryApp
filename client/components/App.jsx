@@ -1,6 +1,7 @@
 import React from "react";
-import AddItem from "./AddItem";
 import SelectItem from "./SelectItem";
+import { Hashrouter as Router, Route } from "react-router-dom";
+
 const App = () => {
   return (
     <div className="container">
