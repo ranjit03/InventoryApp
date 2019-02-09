@@ -6,6 +6,10 @@ function getAllProducts() {
   return db("item");
 }
 
+function getProduct(name) {
+  return db("item").where("name", name);
+}
 module.exports = {
-  getAllProducts
+  getAllProducts,
+  getProduct
 };
