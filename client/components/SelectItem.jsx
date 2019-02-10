@@ -1,5 +1,6 @@
 import React from "react";
 import AddItem from "./AddItem";
+import { getItemDetails } from "../api/index";
 
 class SelectItem extends React.Component {
   constructor() {
@@ -10,7 +11,9 @@ class SelectItem extends React.Component {
   }
 
   stockOnHand() {
-    return <div>{window.alert("Beer Mugs stock on hand is 505")}</div>;
+    getItemDetails(event.target.value).then(stock => (
+      <div>{window.alert("Stock on hand is " + stock[0].stock_on_hand)}</div>
+    ));
   }
   addStock() {
     return <div>{prompt("Please enter quantity", "Example: 500")}</div>;
@@ -29,7 +32,9 @@ class SelectItem extends React.Component {
             <option value="champagne flutes">Champagne Flutes</option>
             <option value="red wine glasses">Red Wine Glasses</option>
           </select>
-          <button onClick={this.stockOnHand}>Stock on hand</button>
+          <button value="test 3" onClick={this.stockOnHand}>
+            Stock on hand
+          </button>
           <br />
           <br />
           <br />
@@ -49,6 +54,7 @@ class SelectItem extends React.Component {
           </select>
           <button onClick={this.deleteStock}>Delete Stock</button>
         </div>
+
         <div className="col-6">
           <AddItem />
         </div>
