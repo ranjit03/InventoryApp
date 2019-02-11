@@ -9,7 +9,15 @@ function getAllProducts() {
 function getProduct(name) {
   return db("item").where("name", name);
 }
+
+function addStockToDb(name, qty) {
+  return db("item")
+    .where("name", name)
+    .update("stock_on_hand", qty);
+}
+
 module.exports = {
   getAllProducts,
-  getProduct
+  getProduct,
+  addStockToDb
 };

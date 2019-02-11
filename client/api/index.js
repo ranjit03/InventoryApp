@@ -9,7 +9,7 @@ export function getItemDetails(name) {
 export function addStockToInventory(name, qty) {
   return request
     .post(allData + name)
-    .send({ qtytoadd: qty })
+    .send({ qtytoadd: qty, nametoadd: name })
     .then(res => {
       alert("yay got " + JSON.stringify(res.body));
     });

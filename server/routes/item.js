@@ -21,8 +21,13 @@ router.get("/:name", (req, res) => {
 });
 
 router.post("/:name", (req, res) => {
-  const qty = req.body;
+  let qty = req.body;
+  let name = qty.nametoadd;
+  let qtytoadd = qty.qtytoadd;
   console.log(qty);
+  console.log(name);
+  console.log(qtytoadd);
+  itemDb.addStockToDb(name, qtytoadd);
 });
 
 module.exports = router;
