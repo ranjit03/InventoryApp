@@ -7,5 +7,10 @@ export function getItemDetails(name) {
 }
 
 export function addStockToInventory(name, qty) {
-  return request.post(allData + name).then(res => res.body);
+  return request
+    .post(allData + name)
+    .send({ qtytoadd: qty })
+    .then(res => {
+      alert("yay got " + JSON.stringify(res.body));
+    });
 }

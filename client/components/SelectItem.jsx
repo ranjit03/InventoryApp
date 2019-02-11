@@ -24,9 +24,8 @@ class SelectItem extends React.Component {
     ));
   }
   addStock() {
-    addStockToInventory(event.target.value);
-    const x = prompt("Please enter quantity", "Example: 500");
-    console.log(x);
+    let qty = prompt("Please enter quantity", "Example: 500");
+    addStockToInventory(event.target.value, qty);
   }
 
   deleteStock() {
