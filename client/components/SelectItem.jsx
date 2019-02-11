@@ -1,6 +1,6 @@
 import React from "react";
 import AddItem from "./AddItem";
-import { getItemDetails } from "../api/index";
+import { getItemDetails, addStockToInventory } from "../api/index";
 
 class SelectItem extends React.Component {
   constructor(props) {
@@ -24,7 +24,9 @@ class SelectItem extends React.Component {
     ));
   }
   addStock() {
-    return <div>{prompt("Please enter quantity", "Example: 500")}</div>;
+    addStockToInventory(event.target.value);
+    const x = prompt("Please enter quantity", "Example: 500");
+    console.log(x);
   }
 
   deleteStock() {
