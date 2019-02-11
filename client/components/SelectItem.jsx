@@ -50,21 +50,25 @@ class SelectItem extends React.Component {
           <br />
           <br />
           <br />
-          <select className="margin">
-            <option value="berr mug">Beer Mugs</option>
-            <option value="champagne flutes">Champagne Flutes</option>
-            <option value="red wine glasses">Red Wine Glasses</option>
+          <select className="margin" onChange={this.buttonValueUpdate}>
+            <option value="test 1">Beer Mugs</option>
+            <option value="test 2">Champagne Flutes</option>
+            <option value="test 3">Red Wine Glasses</option>
           </select>
-          <button onClick={this.addStock}>Add Stock</button>
+          <button value={this.state.item} onClick={this.addStock}>
+            Add Stock
+          </button>
           <br />
           <br />
           <br />
-          <select className="margin">
-            <option value="beer mug">Beer Mugs</option>
-            <option value="champagne flutes">Champagne Flutes</option>
-            <option value="red wine glasses">Red Wine Glasses</option>
+          <select className="margin" onChange={this.buttonValueUpdate}>
+            <option value="test 1">Beer Mugs</option>
+            <option value="test 2">Champagne Flutes</option>
+            <option value="test 3">Red Wine Glasses</option>
           </select>
-          <button onClick={this.deleteStock}>Delete Stock</button>
+          <button value={this.state.item} onClick={this.deleteStock}>
+            Delete Stock
+          </button>
         </div>
 
         <div className="col-6">
