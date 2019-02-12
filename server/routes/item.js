@@ -22,6 +22,7 @@ router.get("/:name", (req, res) => {
 
 router.post("/:name", (req, res) => {
   let qty = req.body;
+  console.log(qty);
   let name = qty.nametoadd;
   let qtytoadd = Number(qty.qtytoadd);
 
@@ -52,6 +53,11 @@ router.post("/delete/:name", (req, res) => {
       })
       .catch(err => {});
   });
+});
+
+router.post("/add/", (req, res) => {
+  let itemToAdd = req.body;
+  console.log(itemToAdd);
 });
 
 module.exports = router;

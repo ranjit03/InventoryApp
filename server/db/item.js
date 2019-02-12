@@ -7,7 +7,7 @@ function getAllProducts() {
 }
 
 function getProduct(name) {
-  return db("item").where("name", name);
+  return db("item").where("name", name || 0);
 }
 
 function getStock(name) {
@@ -19,13 +19,13 @@ function getStock(name) {
 function addStockToDb(name, qtytoadd, currentstock) {
   return db("item")
     .where("name", name)
-    .update("stock_on_hand", qtytoadd + currentstock.stock_on_hand);
+    .update("stock_on_hand", currentstock.stock_on_hand + qtytoadd);
 }
 
 function deleteStockFromDb(name, qtytodelete, currentstock) {
   return db("item")
-    .where("name", name)
-    .update("stock_on_hand", currentstock.stock_on_hand - qtytodelete);
+    .where("name", name || 0)
+    .update("stock_on_hand", currentstock.stock_on_hand - qtytodelete || 0);
 }
 
 module.exports = {
