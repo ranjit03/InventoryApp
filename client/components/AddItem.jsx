@@ -1,4 +1,5 @@
 import React from "react";
+import { addProductToInventory } from "../api";
 
 class AddItem extends React.Component {
   constructor() {
@@ -18,6 +19,7 @@ class AddItem extends React.Component {
     this.handleChangeDimension = this.handleChangeDimension.bind(this);
     this.handleChangeSupplier = this.handleChangeSupplier.bind(this);
     this.handleChangeRetailPrice = this.handleChangeRetailPrice.bind(this);
+    this.handleClickButton = this.handleClickButton.bind(this);
   }
 
   handleClick() {
@@ -25,7 +27,9 @@ class AddItem extends React.Component {
   }
 
   handleClickButton() {
-    console.log(event.target.value);
+    let newItem = event.target.value;
+    console.log(newItem);
+    addProductToInventory(newItem);
   }
 
   handleChangeName() {
@@ -110,7 +114,7 @@ class AddItem extends React.Component {
             <td align="middle">
               <button
                 type="button"
-                value={Object.values(this.state)}
+                value={JSON.stringify(this.state)}
                 onClick={this.handleClickButton}
               >
                 submit

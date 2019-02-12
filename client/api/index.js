@@ -24,3 +24,13 @@ export function deleteStockFromInventory(name, qty) {
       alert("Successfully deleted stock :)");
     });
 }
+
+export function addProductToInventory(product) {
+  const addroute = "add/";
+  return request
+    .post(allData + addroute)
+    .send({ newproduct: product })
+    .then(res => {
+      alert("Successfully added item :)");
+    });
+}
