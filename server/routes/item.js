@@ -23,18 +23,20 @@ router.get("/:name", (req, res) => {
 router.post("/:name", (req, res) => {
   let qty = req.body;
   let name = qty.nametoadd;
-  let qtytoadd = qty.qtytoadd;
+  let qtytoadd = Number(qty.qtytoadd);
   console.log(qty);
-  console.log(name);
-  console.log(qtytoadd);
-  itemDb
-    .addStockToDb(name, qtytoadd)
-    .then(ids => {
-      res.json({});
-    })
-    .catch(err => {
-      console.log(err);
-    });
+
+  itemDb.getStock(name).then(currentstock => {
+    console.log(currentstock);
+    itemDb
+      .addStockToDb(name, qtytoadd, currentstock)
+      .then(ids => {
+        res.json({});
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  });
 });
 
 module.exports = router;

@@ -10,18 +10,21 @@ function getProduct(name) {
   return db("item").where("name", name);
 }
 
-function addStockToDb(name, qty) {
-  const initialQty = db("item")
-    .where("name", name)
-    .select("stock_on_hand");
-
+function getStock(name) {
   return db("item")
     .where("name", name)
-    .update("stock_on_hand", initialQty + qty);
+    .select("stock_on_hand")
+    .first();
+}
+function addStockToDb(name, qtytoadd, currentstock) {
+  return db("item")
+    .where("name", name)
+    .update("stock_on_hand", qtytoadd + currentstock.stock_on_hand);
 }
 
 module.exports = {
   getAllProducts,
   getProduct,
-  addStockToDb
+  addStockToDb,
+  getStock
 };
