@@ -24,18 +24,33 @@ router.post("/:name", (req, res) => {
   let qty = req.body;
   let name = qty.nametoadd;
   let qtytoadd = Number(qty.qtytoadd);
-  console.log(qty);
 
   itemDb.getStock(name).then(currentstock => {
-    console.log(currentstock);
     itemDb
       .addStockToDb(name, qtytoadd, currentstock)
       .then(ids => {
         res.json({});
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => {});
+  });
+});
+
+router.post("/delete/:name", (req, res) => {
+  let qty = req.body;
+  let name = qty.nametodelete;
+  let qtytodelete = Number(qty.qtytodelete);
+  console.log(qty);
+  console.log(name);
+  console.log(qtytodelete);
+
+  itemDb.getStock(name).then(currentstock => {
+    console.log(currentstock);
+    itemDb
+      .deleteStockFromDb(name, qtytodelete, currentstock)
+      .then(ids => {
+        res.json({});
+      })
+      .catch(err => {});
   });
 });
 

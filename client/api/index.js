@@ -11,6 +11,16 @@ export function addStockToInventory(name, qty) {
     .post(allData + name)
     .send({ qtytoadd: qty, nametoadd: name })
     .then(res => {
-      alert("yay got " + JSON.stringify(res.body));
+      alert("Successfully added stock :)");
+    });
+}
+
+export function deleteStockFromInventory(name, qty) {
+  const route = "delete/";
+  return request
+    .post(allData + route + name)
+    .send({ qtytodelete: qty, nametodelete: name })
+    .then(res => {
+      alert("Successfully deleted stock :)");
     });
 }

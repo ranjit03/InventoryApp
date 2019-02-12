@@ -22,9 +22,16 @@ function addStockToDb(name, qtytoadd, currentstock) {
     .update("stock_on_hand", qtytoadd + currentstock.stock_on_hand);
 }
 
+function deleteStockFromDb(name, qtytodelete, currentstock) {
+  return db("item")
+    .where("name", name)
+    .update("stock_on_hand", currentstock.stock_on_hand - qtytodelete);
+}
+
 module.exports = {
   getAllProducts,
   getProduct,
   addStockToDb,
-  getStock
+  getStock,
+  deleteStockFromDb
 };
