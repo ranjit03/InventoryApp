@@ -11,9 +11,13 @@ function getProduct(name) {
 }
 
 function addStockToDb(name, qty) {
+  const initialQty = db("item")
+    .where("name", name)
+    .select("stock_on_hand");
+
   return db("item")
     .where("name", name)
-    .update("stock_on_hand", qty);
+    .update("stock_on_hand", initialQty + qty);
 }
 
 module.exports = {

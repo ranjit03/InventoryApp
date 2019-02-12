@@ -27,7 +27,14 @@ router.post("/:name", (req, res) => {
   console.log(qty);
   console.log(name);
   console.log(qtytoadd);
-  itemDb.addStockToDb(name, qtytoadd);
+  itemDb
+    .addStockToDb(name, qtytoadd)
+    .then(ids => {
+      res.json({});
+    })
+    .catch(err => {
+      console.log(err);
+    });
 });
 
 module.exports = router;
