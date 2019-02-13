@@ -20,32 +20,29 @@ router.get("/:name", (req, res) => {
   itemDb.getProduct(req.params.name).then(product => res.json(product));
 });
 
-router.post("/:name", (req, res) => {
-  let qty = req.body;
-  console.log(qty);
-  let name = qty.nametoadd;
-  let qtytoadd = Number(qty.qtytoadd);
+// router.post("/:name", (req, res) => {
+//   let qty = req.body;
 
-  itemDb.getStock(name).then(currentstock => {
-    itemDb
-      .addStockToDb(name, qtytoadd, currentstock)
-      .then(ids => {
-        res.json({});
-      })
-      .catch(err => {});
-  });
-});
+//   let name = qty.nametoadd;
+//   let qtytoadd = Number(qty.qtytoadd);
+
+//   itemDb.getStock(name).then(currentstock => {
+//     itemDb
+//       .addStockToDb(name, qtytoadd, currentstock)
+//       .then(ids => {
+//         res.json({});
+//       })
+//       .catch(err => {});
+//   });
+// });
 
 router.post("/delete/:name", (req, res) => {
   let qty = req.body;
+  console.log(qty);
   let name = qty.nametodelete;
   let qtytodelete = Number(qty.qtytodelete);
-  console.log(qty);
-  console.log(name);
-  console.log(qtytodelete);
 
   itemDb.getStock(name).then(currentstock => {
-    console.log(currentstock);
     itemDb
       .deleteStockFromDb(name, qtytodelete, currentstock)
       .then(ids => {
@@ -55,9 +52,29 @@ router.post("/delete/:name", (req, res) => {
   });
 });
 
-router.post("/add/", (req, res) => {
-  let itemToAdd = req.body;
-  console.log(itemToAdd);
+router.post("/add", (req, res) => {
+  let jsonString = req.body.newproduct;
+  console.log(jsonString);
+
+  let jsonObject = JSON.parse(jsonString);
+  console.log(jsonObject);
+
+  let newItemObj = {
+    name: jsonObject.name,
+    description: jsonObject.description,
+    dimensions: jsonObject.dimensions,
+    supplier: jsonObject.supplier,
+    retail_price: jsonObject.retail_price,
+    stock_on_hand: jsonObject.stock_on_hand
+  };
+
+  console.log(newItemObj);
+  itemDb
+    .addItemToDb(newItemObj)
+    .then(ids => {
+      res.json({});
+    })
+    .catch(err => {});
 });
 
 module.exports = router;

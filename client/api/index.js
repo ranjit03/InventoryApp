@@ -26,7 +26,7 @@ export function deleteStockFromInventory(name, qty) {
 }
 
 export function addProductToInventory(product) {
-  const addroute = "add/";
+  const addroute = "add";
   return request
     .post(allData + addroute)
     .send({ newproduct: product })

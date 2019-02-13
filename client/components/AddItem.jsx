@@ -10,7 +10,8 @@ class AddItem extends React.Component {
       description: null,
       dimensions: null,
       supplier: null,
-      retail_price: null
+      retail_price: null,
+      stock_on_hand: null
     };
     this.handleClick = this.handleClick.bind(this);
     this.additem = this.addItem.bind(this);
@@ -19,6 +20,7 @@ class AddItem extends React.Component {
     this.handleChangeDimension = this.handleChangeDimension.bind(this);
     this.handleChangeSupplier = this.handleChangeSupplier.bind(this);
     this.handleChangeRetailPrice = this.handleChangeRetailPrice.bind(this);
+    this.handleChangeInitialStock = this.handleChangeInitialStock.bind(this);
     this.handleClickButton = this.handleClickButton.bind(this);
   }
 
@@ -55,6 +57,11 @@ class AddItem extends React.Component {
   handleChangeRetailPrice() {
     this.setState({
       retail_price: event.target.value
+    });
+  }
+  handleChangeInitialStock() {
+    this.setState({
+      stock_on_hand: event.target.value
     });
   }
 
@@ -105,6 +112,16 @@ class AddItem extends React.Component {
                 type="text"
                 name=" Retail Price"
                 onChange={this.handleChangeRetailPrice}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td align="right"> Initial Stock:</td>
+            <td align="left">
+              <input
+                type="text"
+                name=" Initial Stock"
+                onChange={this.handleChangeInitialStock}
               />
             </td>
           </tr>

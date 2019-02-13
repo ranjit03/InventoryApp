@@ -12,7 +12,7 @@ function getProduct(name) {
 
 function getStock(name) {
   return db("item")
-    .where("name", name)
+    .where("name", name || 0)
     .select("stock_on_hand")
     .first();
 }
@@ -28,10 +28,15 @@ function deleteStockFromDb(name, qtytodelete, currentstock) {
     .update("stock_on_hand", currentstock.stock_on_hand - qtytodelete || 0);
 }
 
+function addItemToDb(obj) {
+  return db("item").insert(obj);
+}
+
 module.exports = {
   getAllProducts,
   getProduct,
   addStockToDb,
   getStock,
-  deleteStockFromDb
+  deleteStockFromDb,
+  addItemToDb
 };
