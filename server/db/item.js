@@ -7,7 +7,7 @@ function getAllProducts() {
 }
 
 function getProduct(name) {
-  return db("item").where("name", name || 0);
+  return db("item").where("name", name);
 }
 
 function getStock(name) {
@@ -25,7 +25,7 @@ function addStockToDb(name, qtytoadd, currentstock) {
 function deleteStockFromDb(name, qtytodelete, currentstock) {
   return db("item")
     .where("name", name || 0)
-    .update("stock_on_hand", currentstock.stock_on_hand - qtytodelete || 0);
+    .update("stock_on_hand", currentstock.stock_on_hand - qtytodelete);
 }
 
 function addItemToDb(obj) {

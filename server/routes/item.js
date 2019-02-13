@@ -20,21 +20,21 @@ router.get("/:name", (req, res) => {
   itemDb.getProduct(req.params.name).then(product => res.json(product));
 });
 
-// router.post("/:name", (req, res) => {
-//   let qty = req.body;
+router.post("/:name", (req, res) => {
+  let qty = req.body;
 
-//   let name = qty.nametoadd;
-//   let qtytoadd = Number(qty.qtytoadd);
+  let name = qty.nametoadd;
+  let qtytoadd = Number(qty.qtytoadd);
 
-//   itemDb.getStock(name).then(currentstock => {
-//     itemDb
-//       .addStockToDb(name, qtytoadd, currentstock)
-//       .then(ids => {
-//         res.json({});
-//       })
-//       .catch(err => {});
-//   });
-// });
+  itemDb.getStock(name).then(currentstock => {
+    itemDb
+      .addStockToDb(name, qtytoadd, currentstock)
+      .then(ids => {
+        res.json({});
+      })
+      .catch(err => {});
+  });
+});
 
 router.post("/delete/:name", (req, res) => {
   let qty = req.body;
